@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Remote control</string>
+    <string name="car_gas">G\na\ns</string>
+    <string name="car_break">B\nr\na\nk\ne</string>
+    <string name="car_mode_drive">DRIVE</string>
+    <string name="car_mode_park">PARK</string>
+
+</resources>
