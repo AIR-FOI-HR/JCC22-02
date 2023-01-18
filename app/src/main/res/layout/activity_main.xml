@@ -4,79 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00BCD4"
+    android:screenOrientation="landscape"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="60dp"
-        android:layout_height="119dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="#F44336"
-        android:text="@string/car_break"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="60dp"
-        android:layout_height="119dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="#8BC34A"
-        android:text="@string/car_gas"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <RadioGroup
-        android:layout_width="98dp"
-        android:layout_height="82dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="164dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="98dp"
-            android:layout_height="33dp"
-            android:fontFeatureSettings="20p"
-            android:text="@string/car_mode_drive"
-            android:textSize="20sp" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="98dp"
-            android:layout_height="33dp"
-            android:fontFeatureSettings="20p"
-            android:text="@string/car_mode_park"
-            android:textSize="20sp" />
-    </RadioGroup>
-
     <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="106dp"
-        android:layout_height="84dp"
-        android:layout_marginEnd="424dp"
+        android:id="@+id/btnBack"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="660dp"
         android:layout_marginBottom="40dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/arrow"
-        android:contentDescription="TODO" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="106dp"
-        android:layout_height="84dp"
-        android:layout_marginEnd="288dp"
-        android:layout_marginBottom="40dp"
-        android:rotation="180"
+        android:contentDescription="TODO"
+        android:rotation="-90"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/arrow" />
+
+    <ImageButton
+        android:id="@+id/btnForward"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="668dp"
+        android:layout_marginBottom="160dp"
+        android:contentDescription="TODO"
+        android:rotation="90"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:srcCompat="@drawable/arrow" />
+
+    <ImageButton
+        android:id="@+id/btnRight"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:paddingTop="10dp"
+        android:rotation="180"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/arrow"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnLeft"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="TODO"
+        android:paddingTop="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnRight"
+        app:srcCompat="@drawable/arrow" />
+
+    <ImageView
+        android:layout_width="564dp"
+        android:layout_height="294dp"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="50dp"
+        android:src="@drawable/rectangle"
+        app:layout_constraintBottom_toTopOf="@+id/btnRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02"></ImageView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="24dp" />
 
 </android.support.constraint.ConstraintLayout>
