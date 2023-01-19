@@ -6,12 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <Button
         android:id="@+id/button"
         android:layout_width="60dp"
         android:layout_height="119dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="604dp"
+        android:layout_marginBottom="52dp"
         android:backgroundTint="#F44336"
         android:text="@string/car_break"
         android:textSize="16sp"
@@ -22,8 +24,8 @@
         android:id="@+id/button2"
         android:layout_width="60dp"
         android:layout_height="119dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="544dp"
+        android:layout_marginBottom="64dp"
         android:backgroundTint="#8BC34A"
         android:text="@string/car_gas"
         android:textSize="16sp"
@@ -33,8 +35,8 @@
     <RadioGroup
         android:layout_width="98dp"
         android:layout_height="82dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginEnd="516dp"
+        android:layout_marginBottom="264dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -59,20 +61,23 @@
         android:id="@+id/imageButton3"
         android:layout_width="106dp"
         android:layout_height="84dp"
-        android:layout_marginEnd="424dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="164dp"
+        android:adjustViewBounds="false"
+        android:background="@drawable/rounded_corner"
+        android:contentDescription="TODO"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/arrow"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/arrow" />
 
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="106dp"
         android:layout_height="84dp"
-        android:layout_marginEnd="288dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="164dp"
+        android:background="@drawable/rounded_corner"
         android:rotation="180"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
