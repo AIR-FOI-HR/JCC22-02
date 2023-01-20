@@ -50,22 +50,24 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE_ENABLE_BT)
         }
         val pairedDevices: Set<BluetoothDevice> = bAdapter.bondedDevices
+        var adresaTrazenog: String = ""
         if (pairedDevices.isEmpty()) {
             println("No paired Bluetooth devices found")
         } else {
             println("Paired Bluetooth devices:")
             for (device in pairedDevices) {
+                if(device.name == "HD 350BT") adresaTrazenog = device.address
                 println("- ${device.name} (${device.address})")
             }
         }
-    }
+        val device = bAdapter.getRemoteDevice(adresaTrazenog)
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            if(requestCode == Activity.RESULT_OK){
-                Toast.makeText(this, Activity.RESULT_OK.toString(), Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this, Activity.RESULT_CANCELED.toString(), Toast.LENGTH_SHORT).show()
-            }
-        super.onActivityResult(requestCode, resultCode, data)
+        val socket = device.createInsecureRfcommSocketToServiceRecord(
+            java.util.UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"))
+        socket.connect()
+
+        println("Connected to device: ${device.name} (${device.address})")
+        // Do something with the socket, like send data
+        socket.close()
     }
 }
