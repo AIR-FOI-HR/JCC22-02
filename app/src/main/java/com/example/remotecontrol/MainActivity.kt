@@ -17,7 +17,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     companion object{
-        var myUUID: UUID = UUID.fromString(UUID.randomUUID().toString())
+        var myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
         var btSocket: BluetoothSocket? = null
         lateinit var progresDialog: ProgressDialog
         lateinit var bAdapter: BluetoothAdapter
