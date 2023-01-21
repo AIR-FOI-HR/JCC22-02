@@ -4,5 +4,7 @@
     <string name="car_break">B\nr\na\nk\ne</string>
     <string name="car_mode_drive">DRIVE</string>
     <string name="car_mode_park">PARK</string>
+    <string name="refresh">REFRESH</string>
+    <string name="disconnect">DISCONNECT</string>
 
 </resources>

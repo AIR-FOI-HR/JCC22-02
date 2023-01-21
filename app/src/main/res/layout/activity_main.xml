@@ -12,40 +12,36 @@
         android:id="@+id/btnBack"
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="660dp"
-        android:layout_marginBottom="40dp"
-        android:contentDescription="TODO"
         android:rotation="-90"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnForward"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
         app:srcCompat="@drawable/arrow" />
 
     <ImageButton
         android:id="@+id/btnForward"
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="668dp"
-        android:layout_marginBottom="160dp"
-        android:contentDescription="TODO"
         android:rotation="90"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnBack"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_Disconnect_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
         app:srcCompat="@drawable/arrow" />
 
     <ImageButton
         android:id="@+id/btnRight"
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:paddingTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:rotation="180"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/arrow"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
@@ -53,33 +49,38 @@
         android:id="@+id/btnLeft"
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="TODO"
-        android:paddingTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnRight"
+        app:layout_constraintRight_toLeftOf="@+id/btnRight"
         app:srcCompat="@drawable/arrow" />
 
     <ImageView
-        android:layout_width="564dp"
-        android:layout_height="294dp"
-        android:layout_marginTop="1dp"
-        android:paddingBottom="50dp"
+        android:id="@+id/ImageViewCamera"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/rectangle"
         app:layout_constraintBottom_toTopOf="@+id/btnRight"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/main_activity_Disconnect_btn"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02"></ImageView>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+
+        />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/main_activity_Disconnect_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="24dp" />
+        android:text="@string/disconnect"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        />
 
 </android.support.constraint.ConstraintLayout>
