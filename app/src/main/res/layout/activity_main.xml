@@ -4,84 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00BCD4"
+    android:screenOrientation="landscape"
     tools:context=".MainActivity">
 
-
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="60dp"
-        android:layout_height="119dp"
-        android:layout_marginEnd="604dp"
-        android:layout_marginBottom="52dp"
-        android:backgroundTint="#F44336"
-        android:text="@string/car_break"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="60dp"
-        android:layout_height="119dp"
-        android:layout_marginEnd="544dp"
-        android:layout_marginBottom="64dp"
-        android:backgroundTint="#8BC34A"
-        android:text="@string/car_gas"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <RadioGroup
-        android:layout_width="98dp"
-        android:layout_height="82dp"
-        android:layout_marginEnd="516dp"
-        android:layout_marginBottom="264dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="98dp"
-            android:layout_height="33dp"
-            android:fontFeatureSettings="20p"
-            android:text="@string/car_mode_drive"
-            android:textSize="20sp" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="98dp"
-            android:layout_height="33dp"
-            android:fontFeatureSettings="20p"
-            android:text="@string/car_mode_park"
-            android:textSize="20sp" />
-    </RadioGroup>
-
     <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="106dp"
-        android:layout_height="84dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginBottom="164dp"
-        android:adjustViewBounds="false"
-        android:background="@drawable/rounded_corner"
-        android:contentDescription="TODO"
+        android:id="@+id/btnBack"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:rotation="-90"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnForward"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
         app:srcCompat="@drawable/arrow" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="106dp"
-        android:layout_height="84dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="164dp"
-        android:background="@drawable/rounded_corner"
+        android:id="@+id/btnForward"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:rotation="90"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_Disconnect_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/arrow" />
+
+    <ImageButton
+        android:id="@+id/btnRight"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:rotation="180"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/arrow"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnLeft"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btnRight"
         app:srcCompat="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/ImageViewCamera"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/rectangle"
+        app:layout_constraintBottom_toTopOf="@+id/btnRight"
+        app:layout_constraintLeft_toRightOf="@+id/main_activity_Disconnect_btn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+
+        />
+
+    <Button
+        android:id="@+id/main_activity_Disconnect_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/disconnect"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        />
 
 </android.support.constraint.ConstraintLayout>
