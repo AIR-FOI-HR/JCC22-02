@@ -9,6 +9,7 @@ import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.widget.Button
 import android.widget.ImageButton
 import java.io.IOException
@@ -23,8 +24,8 @@ class MainActivity : AppCompatActivity() {
         lateinit var bAdapter: BluetoothAdapter
         var isConnected: Boolean = false
         var address: String? = null
-        var done: Boolean = false
     }
+    private var keepLogging = false;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +34,35 @@ class MainActivity : AppCompatActivity() {
         Log.i("address", address.toString())
 
         ConnectToDevice(this).execute()
+        setListeners()
 
-        //while(!done){}
-        //if(!isConnected) disconnect()
+    }
+    private fun setListeners(){
+        val btnForward: ImageButton = findViewById<ImageButton>(R.id.btnForward)
 
-        findViewById<ImageButton>(R.id.btnForward).setOnClickListener{sendCommand("F")}
+        btnForward.setOnTouchListener { _, event ->
+            when(event.action){
+                MotionEvent.ACTION_DOWN -> {
+                    keepLogging = true
+                    logtxt("F")
+                }
+                MotionEvent.ACTION_UP -> keepLogging = false
+                else -> {}
+            }
+            true
+        }
         findViewById<Button>(R.id.main_activity_Disconnect_btn).setOnClickListener { disconnect() }
     }
+    private fun logtxt(command: String){
+        Thread(Runnable {
+            while(keepLogging){
+                sendCommand(command)
+                Thread.sleep(100)
+            }
+        }).start()
+    }
     private fun sendCommand(command: String){
+        Log.d("Forward", command)
         if(btSocket != null){
             try {
                 btSocket!!.outputStream.write(command.toByteArray())
@@ -56,7 +78,6 @@ class MainActivity : AppCompatActivity() {
                 btSocket!!.close()
                 btSocket = null
                 isConnected = false
-                done = false
             }catch (e: IOException){
                 e.printStackTrace()
             }
@@ -101,7 +122,6 @@ class MainActivity : AppCompatActivity() {
                 isConnected = true
             }
             progresDialog.dismiss()
-            done = true
         }
     }
 }
