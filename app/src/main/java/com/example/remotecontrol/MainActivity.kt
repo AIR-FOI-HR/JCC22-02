@@ -6,14 +6,15 @@ import android.bluetooth.BluetoothManager
 import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.os.AsyncTask
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.Button
 import android.widget.ImageButton
 import java.io.IOException
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,13 +26,17 @@ class MainActivity : AppCompatActivity() {
         var isConnected: Boolean = false
         var address: String? = null
     }
-    private var keepLogging = false;
+    private var keepLogging = false
+    private var twoButtonsClicked = false
+    private var left = false
+    private var right = false
+    private var back = false
+    private var forward = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         address = intent.getStringExtra(SelectDeviceActivity.ADDRESS_OF_DEVICE)
-        Log.i("address", address.toString())
 
         ConnectToDevice(this).execute()
         setListeners()
@@ -39,33 +44,146 @@ class MainActivity : AppCompatActivity() {
     }
     private fun setListeners(){
         val btnForward: ImageButton = findViewById<ImageButton>(R.id.btnForward)
+        val btnBack: ImageButton = findViewById<ImageButton>(R.id.btnBack)
+        val btnLeft: ImageButton = findViewById<ImageButton>(R.id.btnLeft)
+        val btnRight: ImageButton = findViewById<ImageButton>(R.id.btnRight)
+        findViewById<Button>(R.id.main_activity_Disconnect_btn).setOnClickListener { disconnect() }
+
 
         btnForward.setOnTouchListener { _, event ->
             when(event.action){
                 MotionEvent.ACTION_DOWN -> {
-                    keepLogging = true
+                    forward = true
+                    if(!keepLogging) keepLogging = true
+                    else twoButtonsClicked = true
+
                     logtxt("F")
                 }
-                MotionEvent.ACTION_UP -> keepLogging = false
+                MotionEvent.ACTION_UP -> {
+                    forward = false
+                    if(twoButtonsClicked){
+                        keepLogging = false
+                        keepLogging = true
+                        //sendCommand(("S"))
+                        twoButtonsClicked = false
+                    }else{
+                        keepLogging = false
+                        sendCommand("S")
+                    }
+
+                }
                 else -> {}
             }
             true
         }
-        findViewById<Button>(R.id.main_activity_Disconnect_btn).setOnClickListener { disconnect() }
+
+        btnBack.setOnTouchListener { _, event ->
+            when(event.action){
+                MotionEvent.ACTION_DOWN -> {
+                    back = true
+                    if(!keepLogging) keepLogging = true
+                    else twoButtonsClicked = true
+
+                    logtxt("B")
+                }
+                MotionEvent.ACTION_UP -> {
+                    back = false
+                    if(twoButtonsClicked){
+                    keepLogging = false
+                    keepLogging = true
+                    //sendCommand(("S"))
+                    twoButtonsClicked = false
+                    }else{
+                    keepLogging = false
+                    sendCommand("S")
+                    }
+                }
+                else -> {}
+            }
+            true
+        }
+
+        btnLeft.setOnTouchListener { _, event ->
+            when(event.action){
+                MotionEvent.ACTION_DOWN -> {
+                    left = true
+                    if(!keepLogging) keepLogging = true
+                    else twoButtonsClicked = true
+
+                    logtxt("L")
+                }
+                MotionEvent.ACTION_UP -> {
+                    if(twoButtonsClicked){
+                        left = false
+                        keepLogging = false
+                        keepLogging = true
+                        //sendCommand(("S"))
+                        twoButtonsClicked = false
+
+                    }else{
+                        left = false
+                        keepLogging = false
+                        sendCommand("S")
+                    }
+
+                }
+                else -> {}
+            }
+            true
+        }
+
+        btnRight.setOnTouchListener { _, event ->
+            when(event.action){
+                MotionEvent.ACTION_DOWN -> {
+                    right = true
+                    if(!keepLogging) keepLogging = true
+                    else twoButtonsClicked = true
+                    logtxt("R")
+                }
+                MotionEvent.ACTION_UP -> {
+                    if(twoButtonsClicked){
+                        right = false
+                        keepLogging = false
+                        keepLogging = true
+                        //sendCommand(("S"))
+                        twoButtonsClicked = false
+                    }else{
+                        right = false
+                        keepLogging = false
+                        sendCommand("S")
+                    }
+
+                }
+                else -> {}
+            }
+            true
+        }
     }
     private fun logtxt(command: String){
         Thread(Runnable {
             while(keepLogging){
                 sendCommand(command)
-                Thread.sleep(100)
+                Thread.sleep(50)
             }
         }).start()
     }
     private fun sendCommand(command: String){
-        Log.d("Forward", command)
+        var c = command
+
+        if(command == "L" && twoButtonsClicked) return
+        if(command == "L" && !left) return
+        if(command == "R" && twoButtonsClicked) return
+        if(command == "R" && !right) return
+        if(command == "F" && !forward) return
+        if(command == "B" && !back) return
+        if(command == "F" && right && twoButtonsClicked) c = "I"
+        if(command == "F" && left && twoButtonsClicked) c = "G"
+        if(command == "B" && left && twoButtonsClicked) c = "H"
+        if(command == "B" && right && twoButtonsClicked) c = "J"
+        //Log.d("Command", c)
         if(btSocket != null){
             try {
-                btSocket!!.outputStream.write(command.toByteArray())
+                btSocket!!.outputStream.write(c.toByteArray())
             }catch (e: IOException){
                 e.printStackTrace()
             }
