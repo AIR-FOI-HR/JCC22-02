@@ -14,10 +14,10 @@
         android:layout_height="70dp"
         android:rotation="-90"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toBottomOf="@+id/btnForward"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
         app:srcCompat="@drawable/arrow" />
 
     <ImageButton
@@ -26,10 +26,10 @@
         android:layout_height="70dp"
         android:rotation="90"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toBottomOf="@+id/main_activity_Disconnect_btn"
+        app:layout_constraintBottom_toTopOf="@+id/btnBack"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         app:srcCompat="@drawable/arrow" />
 
     <ImageButton
@@ -81,6 +81,39 @@
         android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="10dp"
+        />
+    <ImageButton
+        android:id="@+id/btnFrontLights"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_Disconnect_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/front_light"
+        android:scaleType="centerCrop"
+        />
+    <ImageButton
+        android:id="@+id/btnRearLights"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_Disconnect_btn"
+        app:layout_constraintLeft_toRightOf="@+id/btnFrontLights"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/rear_light"
+        android:scaleType="centerCrop"
+        />
+    <ImageButton
+        android:id="@+id/btnHorn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btnBack"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/horn"
+        android:scaleType="centerCrop"
         />
 
 </android.support.constraint.ConstraintLayout>

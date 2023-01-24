@@ -48,6 +48,9 @@ class MainActivity : AppCompatActivity() {
         val btnLeft: ImageButton = findViewById<ImageButton>(R.id.btnLeft)
         val btnRight: ImageButton = findViewById<ImageButton>(R.id.btnRight)
         findViewById<Button>(R.id.main_activity_Disconnect_btn).setOnClickListener { disconnect() }
+        findViewById<ImageButton>(R.id.btnHorn).setOnClickListener{sendCommand("V")}
+        findViewById<ImageButton>(R.id.btnFrontLights).setOnClickListener{sendCommand("W")}
+        findViewById<ImageButton>(R.id.btnRearLights).setOnClickListener{sendCommand("U")}
 
 
         btnForward.setOnTouchListener { _, event ->
@@ -169,7 +172,6 @@ class MainActivity : AppCompatActivity() {
     }
     private fun sendCommand(command: String){
         var c = command
-
         if(command == "L" && twoButtonsClicked) return
         if(command == "L" && !left) return
         if(command == "R" && twoButtonsClicked) return
