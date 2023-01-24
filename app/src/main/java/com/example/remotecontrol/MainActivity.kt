@@ -32,6 +32,9 @@ class MainActivity : AppCompatActivity() {
     private var right = false
     private var back = false
     private var forward = false
+    private var frontLigths = false
+    private var rearLights = false
+    private var horn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -172,17 +175,46 @@ class MainActivity : AppCompatActivity() {
     }
     private fun sendCommand(command: String){
         var c = command
-        if(command == "L" && twoButtonsClicked) return
-        if(command == "L" && !left) return
-        if(command == "R" && twoButtonsClicked) return
-        if(command == "R" && !right) return
-        if(command == "F" && !forward) return
-        if(command == "B" && !back) return
-        if(command == "F" && right && twoButtonsClicked) c = "I"
-        if(command == "F" && left && twoButtonsClicked) c = "G"
-        if(command == "B" && left && twoButtonsClicked) c = "H"
-        if(command == "B" && right && twoButtonsClicked) c = "J"
-        //Log.d("Command", c)
+        when(command){
+            "L" -> {
+                if(twoButtonsClicked) return
+                if(!left) return
+            }
+            "R" -> {
+                if(twoButtonsClicked) return
+                if(!right) return
+            }
+            "F" -> {
+                if(!forward) return
+                if(right && twoButtonsClicked) c = "I"
+                if(left && twoButtonsClicked) c = "G"
+            }
+            "B" -> {
+                if(!back) return
+                if(right && twoButtonsClicked) c = "J"
+                if(left && twoButtonsClicked) c = "H"
+            }
+            "V" -> {
+                if(horn){
+                    c = "v"
+                    horn = false
+                } else horn = true
+            }
+            "W" -> {
+                if(frontLigths){
+                    c = "w"
+                    frontLigths = false
+                } else frontLigths = true
+            }
+            "U" -> {
+                if(rearLights){
+                    c = "u"
+                    rearLights = false
+                }else rearLights = true
+            }
+        }
+
+        Log.d("Command", c)
         if(btSocket != null){
             try {
                 btSocket!!.outputStream.write(c.toByteArray())
