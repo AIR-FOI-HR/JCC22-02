@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     companion object{
         var myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
         var btSocket: BluetoothSocket? = null
-        lateinit var progresDialog: ProgressDialog
+        lateinit var progressDialog: ProgressDialog
         lateinit var bAdapter: BluetoothAdapter
         var isConnected: Boolean = false
         var address: String? = null
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private var right = false
     private var back = false
     private var forward = false
-    private var frontLigths = false
+    private var frontLights = false
     private var rearLights = false
     private var horn = false
 
@@ -46,10 +46,10 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun setListeners(){
-        val btnForward: ImageButton = findViewById<ImageButton>(R.id.btnForward)
-        val btnBack: ImageButton = findViewById<ImageButton>(R.id.btnBack)
-        val btnLeft: ImageButton = findViewById<ImageButton>(R.id.btnLeft)
-        val btnRight: ImageButton = findViewById<ImageButton>(R.id.btnRight)
+        val btnForward: ImageButton = findViewById(R.id.btnForward)
+        val btnBack: ImageButton = findViewById(R.id.btnBack)
+        val btnLeft: ImageButton = findViewById(R.id.btnLeft)
+        val btnRight: ImageButton = findViewById(R.id.btnRight)
         findViewById<Button>(R.id.main_activity_Disconnect_btn).setOnClickListener { disconnect() }
         findViewById<ImageButton>(R.id.btnHorn).setOnClickListener{sendCommand("V")}
         findViewById<ImageButton>(R.id.btnFrontLights).setOnClickListener{sendCommand("W")}
@@ -201,10 +201,10 @@ class MainActivity : AppCompatActivity() {
                 } else horn = true
             }
             "W" -> {
-                if(frontLigths){
+                if(frontLights){
                     c = "w"
-                    frontLigths = false
-                } else frontLigths = true
+                    frontLights = false
+                } else frontLights = true
             }
             "U" -> {
                 if(rearLights){
@@ -248,7 +248,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPreExecute() {
             super.onPreExecute()
-            progresDialog = ProgressDialog.show(context, "Trying to connect...", "Please wait")
+            progressDialog = ProgressDialog.show(context, "Trying to connect...", "Please wait")
         }
         override fun doInBackground(vararg p0: Void?): String? {
             try {
@@ -273,7 +273,7 @@ class MainActivity : AppCompatActivity() {
             }else{
                 isConnected = true
             }
-            progresDialog.dismiss()
+            progressDialog.dismiss()
         }
     }
 }

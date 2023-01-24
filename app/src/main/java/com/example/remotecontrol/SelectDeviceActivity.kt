@@ -53,9 +53,9 @@ class SelectDeviceActivity: AppCompatActivity(){
         }
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
-        val select_device_lv: ListView = findViewById<ListView>(R.id.select_device_list_view)
-        select_device_lv.adapter = adapter
-        select_device_lv.onItemClickListener = AdapterView.OnItemClickListener{_, _, position, _ ->
+        val selectDeviceLv: ListView = findViewById(R.id.select_device_list_view)
+        selectDeviceLv.adapter = adapter
+        selectDeviceLv.onItemClickListener = AdapterView.OnItemClickListener{ _, _, position, _ ->
             val device: BluetoothDevice = list[position]
             val address: String = device.address
             Toast.makeText(this, "Selected device: " + list[position].name, Toast.LENGTH_SHORT).show()
