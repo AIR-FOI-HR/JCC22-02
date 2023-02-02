@@ -1,0 +1,123 @@
+#include <SoftwareSerial.h>
+SoftwareSerial BTmodule(2, 3); //RXD digital 3, TXD digital 2
+char t;
+const int DN=6,DR=7,LN=8,LR=9,SN=10,SVC=5,SI=11,T=4;
+ 
+void setup() {
+Serial.begin(9600);
+BTmodule.begin(9600); 
+pinMode(DN,OUTPUT);  
+pinMode(DR,OUTPUT);   
+pinMode(LN,OUTPUT);   
+pinMode(DR,OUTPUT);
+pinMode(SN,OUTPUT);
+pinMode(SI,OUTPUT);
+pinMode(SVC,OUTPUT);
+pinMode(T,OUTPUT);
+}
+ 
+void loop() {
+if (BTmodule.available())
+t = BTmodule.read();
+  
+  if(t == 'F'){//napred
+  digitalWrite(DN,HIGH);
+  digitalWrite(DR,LOW);
+  digitalWrite(LN,HIGH);
+  digitalWrite(LR,LOW);
+  }
+ 
+  else if(t == 'B'){//nazad
+  digitalWrite(DN,LOW);
+  digitalWrite(DR,HIGH);
+  digitalWrite(LN,LOW);
+  digitalWrite(LR,HIGH);
+  }
+ 
+  else if(t == 'L'){//lijevo
+  digitalWrite(DN,HIGH);
+  digitalWrite(DR,LOW);
+  digitalWrite(LN,LOW);
+  digitalWrite(LR,HIGH);
+  } 
+ 
+  else if(t == 'R'){//desno  
+  digitalWrite(DN,LOW);
+  digitalWrite(DR,HIGH);
+  digitalWrite(LN,HIGH);
+  digitalWrite(LR,LOW);
+  }
+  
+  else if(t == 'G'){//napred lijevo  
+  digitalWrite(DN,HIGH);
+  digitalWrite(DR,LOW);
+  digitalWrite(LN,LOW);
+  digitalWrite(LR,LOW);
+  }
+  else if(t == 'S'){//nista 
+  digitalWrite(DN,LOW);
+  digitalWrite(DR,LOW);
+  digitalWrite(LN,LOW);
+  digitalWrite(LR,LOW);
+  }
+
+  else if(t == 'I'){//naprijed desno  
+  digitalWrite(DN,LOW);
+  digitalWrite(DR,LOW);
+  digitalWrite(LN,HIGH);
+  digitalWrite(LR,LOW);
+  }
+
+  else if(t == 'H'){//nazad lijevo 
+  digitalWrite(DN,LOW);
+  digitalWrite(DR,HIGH);
+  digitalWrite(LN,LOW);
+  digitalWrite(LR,LOW);
+  }
+
+  else if(t == 'J'){//nazad desno  
+  digitalWrite(DN,LOW);
+  digitalWrite(DR,LOW);
+  digitalWrite(LN,LOW);
+  digitalWrite(LR,HIGH);
+  }
+
+  else if(t == 'W'){//svjetlo prednje
+  digitalWrite(SN,HIGH);
+  }
+
+   else if(t == 'w'){//gasi svjetlo prednje
+  digitalWrite(SN,LOW);
+  }
+
+  else if(t == 'U'){//svjetlo zadnje
+  digitalWrite(SI,HIGH);
+  }
+
+   else if(t == 'u'){//gasi svjetlo zadnje
+  digitalWrite(SI,LOW);
+  }
+
+  else if(t == 'V'){//truba   
+  tone(T,500);
+  delay(100);
+  tone(T,450);
+  delay(100);
+  tone(T,400);
+  delay(100);
+  tone(T,350);
+  delay(100);
+  tone(T,300);
+  delay(100);
+  tone(T,250);
+  delay(100);
+  tone(T,200);
+  delay(100);
+  }
+
+  else if(t == 'v'){//gasi trubu
+  noTone(T);
+}
+
+
+}
