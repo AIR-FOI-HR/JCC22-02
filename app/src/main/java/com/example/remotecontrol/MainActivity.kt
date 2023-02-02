@@ -14,6 +14,8 @@ import android.widget.Button
 import android.widget.ImageButton
 import java.io.IOException
 import java.util.*
+import android.webkit.WebViewClient
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +41,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        webView.webViewClient = WebViewClient()
+        webView.loadUrl("http://192.168.43.198:81/stream")
+        webView.settings.javaScriptEnabled = true
+        webView.settings.setSupportZoom(true)
+
         address = intent.getStringExtra(SelectDeviceActivity.ADDRESS_OF_DEVICE)
 
         ConnectToDevice(this).execute()
